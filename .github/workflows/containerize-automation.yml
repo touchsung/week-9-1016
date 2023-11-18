@@ -33,4 +33,5 @@ jobs:
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
       - name: Deploy
-        run: kubectl apply -f manifest/.
+        run: |
+          kubectl apply -f manifest/.
