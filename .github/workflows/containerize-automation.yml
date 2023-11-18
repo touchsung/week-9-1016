@@ -1,5 +1,4 @@
-name: containerize-automation
-run-name: containerize-automation
+name: Containerize Automation
 on:
   push:
     branches:
