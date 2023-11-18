@@ -24,3 +24,11 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/simple-node-app:latest
+  deply_to_k8s:
+    name: Deploy to K8S
+    runs-on: ubuntu-latest
+    steps:
+      - name: Connect K8S Cluster
+        run: ${{ secrets.KUBE_CONFIG }}
+      - name: Deploy
+        run: kubectl get pods
