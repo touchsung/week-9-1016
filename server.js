@@ -4,7 +4,7 @@ const PORT = 3000;
 
 // Simple endpoint
 app.get("/greeting", (req, res) => {
-  const name = req.query.name || "World";
+  const name = req.query.name || "World!!";
   res.json({ message: `Hello, ${name}!` });
 });
 
