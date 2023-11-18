@@ -29,8 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Connect K8S Cluster
-        uses: actions-hub/kubectl@master
-        env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        uses: azure/k8s-set-context@v1
         with:
-          args: get pods
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
