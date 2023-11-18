@@ -27,8 +27,11 @@ jobs:
   deply_to_k8s:
     name: Deploy to K8S
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./manifest
     steps:
       - name: Connect K8S Cluster
         run: ${{ secrets.KUBE_CONFIG }}
       - name: Deploy
-        run: kubectl apply -f manifest/.
+        run: kubectl apply -f .
