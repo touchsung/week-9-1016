@@ -27,8 +27,9 @@ jobs:
   deply_to_k8s:
     name: Deploy to K8S
     runs-on: ubuntu-latest
-
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Connect K8S Cluster
         run: ${{ secrets.KUBE_CONFIG }}
       - name: Deploy
