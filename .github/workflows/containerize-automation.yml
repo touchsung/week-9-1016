@@ -32,3 +32,5 @@ jobs:
         uses: azure/k8s-set-context@v1
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - name: Deploy
+        run: kubectl apply -f manifest/.
