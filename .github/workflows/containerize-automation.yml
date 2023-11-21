@@ -4,6 +4,11 @@ on:
     branches:
       - dev
 jobs:
+  edit_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check yq
+        run: yq --version
   push_to_registry:
     name: Push Docker image to Docker Registry
     runs-on: ubuntu-latest
