@@ -41,7 +41,7 @@ jobs:
         run: |
           export NAME_WITH_TAG=${IMAGE_NAME}:${IMAGE_TAG}
       - name: Modify Mannifest
-        run: yq -i '.spec.template.spec.containers[0].image=strenv(NAME_WITH_TAG)' ./manifest/deployment.yaml
+        run: yq -i '.spec.template.spec.containers[0].image=strenv($NAME_WITH_TAG)' ./manifest/deployment.yaml
       - name: post test file
         run: cat ./manifest/deployment.yaml
       - name: Deploy
