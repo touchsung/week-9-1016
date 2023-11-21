@@ -39,7 +39,7 @@ jobs:
         run: cat ./manifest/deployment.yaml
       - name: export env
         run: |
-          echo "{{ env.IMAGE_NAME }}:{{ env.IMAGE_TAG }}"
+          echo "${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
       # - name: Modify Mannifest
       #   run: yq -i '.spec.template.spec.containers[0].image=strenv(NAME_WITH_TAG)' ./manifest/deployment.yaml
       # - name: post test file
