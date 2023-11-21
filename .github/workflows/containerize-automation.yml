@@ -35,12 +35,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Connect K8S Cluster
         run: ${{ secrets.KUBE_CONFIG }}
-      - name: export env
-        run: |
-          export NAME_WITH_TAG=${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          echo $NAME_WITH_TAG
       - name: Modify Mannifest
         run: |
+          export NAME_WITH_TAG=${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           echo $NAME_WITH_TAG
           yq -i '.spec.template.spec.containers[0].image=strenv(NAME_WITH_TAG)' ./manifest/deployment.yaml
       - name: post test file
