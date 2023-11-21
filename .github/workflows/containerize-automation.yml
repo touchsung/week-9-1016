@@ -39,7 +39,7 @@ jobs:
         run: cat ./manifest/deployment.yaml
       - name: export env
         run: |
-          export NAME_WITH_TAG=${IMAGE_NAME}:${IMAGE_TAG}
+          export NAME_WITH_TAG=${IMAGE_NAME+':'+IMAGE_TAG}
       - name: export env
         run: |
           echo NAME_WITH_TAG
