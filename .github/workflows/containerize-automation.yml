@@ -35,6 +35,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Connect K8S Cluster
         run: ${{ secrets.KUBE_CONFIG }}
+      - name: test file
+        run: cat ./manifest/deployment.yaml
       - name: Modify Mannifest
         run: yq -i '.spec.template.spec.containers[0].image=strenv(IMAGE_NAME):strenv(IMAGE_TAG)' ./manifest/deployment.yaml
       - name: Deploy
