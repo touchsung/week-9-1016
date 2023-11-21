@@ -40,7 +40,9 @@ jobs:
           export NAME_WITH_TAG=${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           echo $NAME_WITH_TAG
       - name: Modify Mannifest
-        run: yq -i '.spec.template.spec.containers[0].image=strenv(NAME_WITH_TAG)' ./manifest/deployment.yaml
+        run: |
+          echo $NAME_WITH_TAG
+          yq -i '.spec.template.spec.containers[0].image=strenv(NAME_WITH_TAG)' ./manifest/deployment.yaml
       - name: post test file
         run: cat ./manifest/deployment.yaml
       - name: Deploy
