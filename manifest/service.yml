@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-node-app-touch-service
+  namespace: group-4
+spec:
+  selector:
+    app: simple-node-app-touch-deployment
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+  type: ClusterIP

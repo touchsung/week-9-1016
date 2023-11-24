@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: simple-node-app-touch-ingress
+  namespace: group-4
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: tcc-01.th1.proen.cloud
+      http:
+        paths:
+          - backend:
+              service:
+                name: simple-node-app-touch-service
+                port:
+                  number: 80
+            path: /group-4-touch(/|$)(.*)
+            pathType: Prefix
